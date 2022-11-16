@@ -1,0 +1,23 @@
+        if (i == 14999){
+            cout << "DSAFGHJGDASFHGDFAHGADFSHGAHDFS" << endl;
+            if (tmpRoom.getEvent()->getType() == 0){
+                Event* ep = new Empty;
+                map[x2][y2].createType2(ep);
+            }
+            else if (tmpRoom.getEvent()->getType() == 1){
+                Event* ep = new Chimera;
+                map[x2][y2].createType2(ep);
+            }
+            else if (tmpRoom.getEvent()->getType() == 2){
+                Event* ep = new Bats;
+                map[x2][y2].createType2(ep);
+            }
+            else if (tmpRoom.getEvent()->getType() == 3){
+                Event* ep = new Lava;
+                map[x2][y2].createType2(ep);
+            }
+            else if (tmpRoom.getEvent()->getType() == 4){
+                Event* ep = new Gold;
+                map[x2][y2].createType2(ep);
+            }
+        }

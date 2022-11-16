@@ -1,0 +1,35 @@
+void _adjustHeap(struct dyArray* heap, int max, int pos){
+    int leftChild = 2*pos + 1;
+    int rightChild = 2*pos + 2;
+    int smallChild;
+    if (rightChild <= max){
+        if (heap->array[leftChild] < heap->array[rightChild]){
+            smallChild = leftChild;
+        }
+        else{
+            smallChild = rightChild;
+        }
+        if (heap->array[pos] > heap->array[smallChild]){
+            _swap(heap, pos, smallChild);
+            _adjustHeap(heap, max, smallChild);
+        }
+    }
+    else if(leftChild < max){
+        if (heap->array[pos] > heap->array[leftChild]){
+            _swap(heap, pos, leftChild);
+            _adjustHeap(heap, max, leftChild);
+        }
+    }
+}
+
+void _swapUp(dyArray* heap, int index){
+    int parent = (index-1)/2;
+    if (heap->array[parent] > heap->array[index]){
+        _swap(heap, parent, index);
+        _swapUp(heap, parent);
+    }
+}
+void heapAdd(dyArray* heap, TYPE newValue){
+    addDynArr(heap, newValue);
+    _swapUp(heap, heap->size-1);
+}
